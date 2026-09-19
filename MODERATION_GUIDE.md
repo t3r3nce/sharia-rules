@@ -328,6 +328,56 @@ Si un admin abuse de ses pouvoirs:
 
 ---
 
+## Procédures d'Inspection Administrative
+
+### Droit d'Inspection (Article 1.7)
+
+L'administration a le droit unilatéral d'inspecter complètement un joueur à tout moment, sans justification préalable.
+
+### Éléments Inspectables
+- Inventaire principal
+- Ender chest
+- Toutes les bases (principales et cachées)
+- Tous les coffres verrouillés
+- Tunnels secrets
+- Cachettes souterraines
+- Structures cachées
+
+### Procédure d'Inspection
+
+**Avant l'inspection:**
+1. Appeler le joueur via message privé ou chat
+2. Dire: "L'administration demande une inspection complète de vos possessions."
+3. Pas besoin de justifier la raison
+
+**Pendant l'inspection:**
+1. Se téléporter aux coordonnées du joueur
+2. Consulter l'inventaire (via `/invsee [pseudo]` si plugin disponible)
+3. Vérifier l'Ender chest
+4. Demander au joueur de montrer toutes ses bases
+5. Accès aux coffres verrouillés (exploration visuelle)
+6. Documenter les zones de stockage importantes
+
+**Refus d'Inspection:**
+- Si le joueur refuse = violation Article 1.7 = ban temporaire immédiat
+- Pas d'appel possible
+
+### Template de Demande d'Inspection
+```
+[Administration]
+Inspection administrative demandée.
+
+Raison: Vérification de routine / Investigation / Autre
+Vous devez montrer votre inventaire complet, toutes vos bases, et coffres.
+
+Rendez-vous aux coordonnées: [X] [Y] [Z]
+ou disponibilité pour inspection.
+
+Refus = violation grave = sanctions.
+```
+
+---
+
 ## Contact & Escalade
 
 **Hiérarchie de Décision:**

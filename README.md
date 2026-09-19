@@ -56,14 +56,17 @@ Le règlement est organisé en **7 sections majeures** :
 ## 🌐 Accès au Règlement
 
 ### Version Web
-- **Site officiel :** Consultez le fichier `index.html` en ligne
-- **Lien direct :** https://[votre-username].github.io/sharia-rules/
+- **Site officiel :** https://t3r3nce.github.io/sharia-rules/
+- **Lien direct :** Ouvrez dans votre navigateur
 
 ### Fonctionnalités du Site
-- **🔍 Barre de recherche** : Entrez des mots-clés pour trouver rapidement les articles (Ex: "X-Ray", "AFK", "Combat", "Quit", "Farm", "Lag")
+- **🔍 Barre de recherche avancée** : Entrez des mots-clés pour trouver rapidement les articles
+  - Exemples: "X-Ray", "AFK", "Combat", "Quit", "Farm", "Lag", "VPN", "TP", "Inspection"
+  - Recherche en temps réel avec highlighting des résultats
+  - Affichage du nombre de résultats trouvés
 - **📌 Navigation sticky** : Accès facile aux sections depuis n'importe où
 - **📱 Responsive design** : Fonctionne sur mobile, tablette et desktop
-- **⚡ Recherche en temps réel** : Les résultats s'actualisent au fur et à mesure de la saisie
+- **⚡ Filtre dynamique** : Les sections vides sont automatiquement masquées lors d'une recherche
 
 ### En Jeu
 Partagez le lien Discord ou créez un panneau avec la commande `/rules` (plugin EssentialsX recommandé).
@@ -183,9 +186,15 @@ Modifiez les valeurs hexadécimales pour adapter au style de votre serveur.
 - ✓ Griefing complet
 - ✓ Auto-clic pour farming
 - ✓ Schématiques de structures
-- ✓ Alliances illimitées
+- ✓ Alliances illimitées (même 5v1)
 - ✓ AFK sans compensation
 - ✓ Clients modifiés (conformes)
+- ✓ VPN autorisé
+- ✓ Comptes secondaires/alts illimités
+- ✓ Comptes simultanés autorisés
+- ✓ Partage d'IP (frères, sœurs, colocataires)
+- ✓ Échanges entre joueurs (trading)
+- ✓ TP Kill avec 5s de grâce post-TP
 
 ---
 

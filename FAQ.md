@@ -20,6 +20,27 @@ Réponses aux questions les plus fréquentes concernant le règlement et le game
 
 ---
 
+## 🔐 VPN, Alts et IP Partagées
+
+### Q: "Peux-je utiliser un VPN ?"
+**R:** Oui, totalement autorisé (Article 1.6). Les VPN ne sont pas interdits sur le serveur.
+
+**Exception:** Utiliser un VPN pour contourner un ban existant = ban permanent aggravé.
+
+### Q: "Je peux avoir plusieurs comptes ?"
+**R:** Oui, les comptes secondaires et alts sont complètement autorisés (Article 1.6). Aucune limite de nombre de comptes.
+
+### Q: "Je peux jouer avec plusieurs alts en même temps ?"
+**R:** Oui, c'est autorisé. Vous pouvez avoir plusieurs comptes actifs simultanément sur le serveur (Article 1.6).
+
+### Q: "Je partage ma maison avec ma sœur/frère, c'est un problème ?"
+**R:** Non, c'est totalement okay (Article 1.6). Plusieurs joueurs avec la même IP sont autorisés sans limite. Le partage d'IP ne signifie pas multi-compte malveillant.
+
+### Q: "Comment l'admin peut-il différencier un alt d'un multi-compte frauduleux ?"
+**R:** C'est à l'admin de le déterminer par d'autres moyens (pattern de joueur, localisation, comportement, etc.). Simplement partager une IP n'est pas une preuve.
+
+---
+
 ## 🎮 Gameplay
 
 ### AFK & Inactivité
@@ -84,6 +105,28 @@ Réponses aux questions les plus fréquentes concernant le règlement et le game
 
 **Q: "Peux-tu me rembourser si j'ai quitté par accident ?"**
 **R:** Non. Il est de votre responsabilité de ne pas quitter (Article 3.3). Aucune compensation.
+
+---
+
+### TP Kill et Téléportation
+
+**Q: "Je peux TP quelqu'un et le tuer après ?"**
+**R:** Oui, c'est autorisé avec des conditions (Article 3.6).
+
+**Q: "Il y a un délai de sécurité ?"**
+**R:** Oui. Après une TP consentie, il existe une fenêtre de protection de **5 secondes** avant que le combat puisse commencer. Aucun dégât ne peut être infligé pendant ces 5 premières secondes (Article 3.6).
+
+**Q: "Qu'est-ce qui se passe après 5 secondes ?"**
+**R:** Le joueur tléporté devient complètement vulnérable et peut être attaqué librement (Article 3.6).
+
+**Q: "Je peux TP quelqu'un sans son accord ?"**
+**R:** Non. La TP doit être consentie. TP sans accord = exploit = violation.
+
+**Q: "Je dois avoir la preuve du consentement ?"**
+**R:** Techniquement non, mais utiliser `/tp` requiert que le joueur accepte (acceptation auto du jeu). C'est considéré comme consentement.
+
+**Q: "Quitter après TP = quit en combat ?"**
+**R:** Oui. Quitter dans les 5 secondes = violation Article 3.3 (confiscation items). Après 5 secondes avec dégâts = quit en combat normal.
 
 ---
 
@@ -239,6 +282,53 @@ Réponses aux questions les plus fréquentes concernant le règlement et le game
 
 **Q: "Je peux partager mon compte avec quelqu'un ?"**
 **R:** Techniquement oui, mais vous êtes responsable de ses actions (Article 1.4).
+
+---
+
+## 💼 Transactions et Trading
+
+### Q: "Je peux échanger des items avec d'autres joueurs ?"
+**R:** Oui, complètement autorisé (Article 6.4). Les trades, marchés et échanges sont totalement permis.
+
+### Q: "Et vendre des items pour de l'argent réel ?"
+**R:** Non. Le RWT (Real World Trading) est interdit = ban permanent (Article 6.4).
+
+### Q: "L'admin peut me rembourser si je me fais arnaquer dans un trade ?"
+**R:** Non. L'administration ne garantit pas la conformité des échanges (Article 6.4). C'est de votre responsabilité de vérifier avant d'accepter.
+
+---
+
+## 📢 Publicité
+
+### Q: "Je peux promouvoir un autre serveur ?"
+**R:** Non, sauf avec **autorisation écrite explicite** de l'administration (Article 6.5).
+
+### Q: "Comment prouver que j'ai l'autorisation ?"
+**R:** Vous devez fournir une preuve directe et vérifiable (screenshot de message admin, etc.). Sans preuve, la promotion sera considérée comme non-autorisée (Article 6.5).
+
+### Q: "J'ai demandé l'autorisation verbalement !"
+**R:** Ce n'est pas suffisant. Vous devez avoir une preuve écrite/documentée de l'autorisation (Article 6.5).
+
+**Sanction:** Mute → Kick → Ban.
+
+---
+
+## 👀 Inspection Administrative
+
+### Q: "L'admin peut me demander de montrer mon inventaire ?"
+**R:** Oui, absolument (Article 1.7). L'admin a le droit d'exiger une inspection complète à tout moment, sans raison.
+
+### Q: "Je peux refuser de montrer mon inventaire ?"
+**R:** Non. Refuser = violation grave = ban temporaire direct (escalade à permanent en cas de récidive).
+
+### Q: "Et mes bases cachées ? Je dois les montrer ?"
+**R:** Oui, l'admin peut vous demander de révéler **toutes vos bases**, même les plus petites cachettes (Article 1.7).
+
+### Q: "Je dois montrer mes coffres ?"
+**R:** Oui. L'admin peut se téléporter directement à vos coordonnées et consulter tous les coffres verrouillés (Article 1.7).
+
+### Q: "L'admin peut-il griefinan l'admin peut-il griefing ma base lors de l'inspection ?"
+**R:** Non. L'inspection ne donne pas le droit de griefing. C'est juste pour vérifier votre inventaire/biens.
 
 ---
 
