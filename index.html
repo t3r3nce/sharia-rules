@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Règlement Serveur Minecraft - Sharia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #2d2d2d;
+            --accent: #c41e3a;
+            --text: #e8e8e8;
+            --text-muted: #a8a8a8;
+            --border: #404040;
+            --highlight: #3d3d3d;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(45,45,45,0.6) 100%);
+            border-bottom: 3px solid var(--accent);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        header .server-name {
+            color: var(--accent);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 100px;
+            z-index: 50;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            overflow-x: auto;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s, border-color 0.3s;
+            border-bottom: 2px solid transparent;
+            padding-bottom: 0.25rem;
+            white-space: nowrap;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section */
+        section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 250px;
+        }
+
+        section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent);
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Article/Rule */
+        .rule {
+            background: var(--highlight);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .rule:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.15);
+        }
+
+        .rule h3 {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .rule p {
+            color: var(--text);
+            margin-bottom: 0.5rem;
+        }
+
+        .rule .subsection {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+            padding-left: 1rem;
+            border-left: 2px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        .rule .subsection strong {
+            color: var(--text);
+        }
+
+        /* Important Notice */
+        .notice {
+            background: linear-gradient(135deg, rgba(196, 30, 58, 0.1) 0%, rgba(196, 30, 58, 0.05) 100%);
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+
+        .notice h3 {
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            border-top: 2px solid var(--accent);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Search Bar */
+        .search-container {
+            background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(45,45,45,0.4) 100%);
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 50px;
+            z-index: 49;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .search-input-container {
+            position: relative;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: var(--highlight);
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            color: var(--text);
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(196, 30, 58, 0.3);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-results-count {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+
+        .search-clear-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        .search-clear-btn:hover {
+            opacity: 0.8;
+        }
+
+        .search-clear-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Highlight animation */
+        .rule.search-highlight {
+            animation: highlight-pulse 0.5s ease;
+        }
+
+        @keyframes highlight-pulse {
+            0% { background: linear-gradient(135deg, rgba(196, 30, 58, 0.3) 0%, rgba(196, 30, 58, 0.1) 100%); }
+            50% { background: linear-gradient(135deg, rgba(196, 30, 58, 0.2) 0%, rgba(196, 30, 58, 0.05) 100%); }
+            100% { background: var(--highlight); }
+        }
+
+        .rule.hidden {
+            display: none;
+        }
+
+        .section-hidden {
+            display: none;
+        }
+
+        .search-info {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .nav-content {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 0.85rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            section h2 {
+                font-size: 1.4rem;
+            }
+
+            .search-input-container {
+                flex-direction: column;
+            }
+
+            .search-clear-btn {
+                width: 100%;
+            }
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Overlay pour highlight */
+        .rule.highlight {
+            background: linear-gradient(135deg, rgba(196, 30, 58, 0.15) 0%, rgba(196, 30, 58, 0.05) 100%);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><span class="server-name">Sharia</span> - Règlement Officiel</h1>
+        <p>Serveur Minecraft - Version 1.0 | Dernière mise à jour : Septembre 2026</p>
+    </header>
+
+    <nav>
+        <div class="nav-content">
+            <a href="#general" class="active">Dispositions Générales</a>
+            <a href="#gameplay">Gameplay & Mécaniques</a>
+            <a href="#combat">PVP & Combat</a>
+            <a href="#construction">Construction & Griefing</a>
+            <a href="#modifications">Modifications & Exploits</a>
+            <a href="#chat">Conduite & Communication</a>
+            <a href="#sanctions">Sanctions & Modération</a>
+        </div>
+    </nav>
+
+    <div class="search-container">
+        <div class="search-wrapper">
+            <div class="search-input-container">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Rechercher une règle... (Ex: X-Ray, AFK, Combat, Quit)"
+                    aria-label="Barre de recherche des règles"
+                >
+                <button id="clearSearch" class="search-clear-btn" disabled>Réinitialiser</button>
+            </div>
+            <div class="search-info">
+                <span id="resultsCount" class="search-results-count"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Preamble Notice -->
+        <div class="notice">
+            <h3>Préambule - Clause Acceptation</h3>
+            <p>Toute personne se connectant au serveur Minecraft <strong>Sharia</strong> accepte explicitement et sans réserve l'intégralité du présent règlement. L'absence de lecture ou de compréhension du règlement ne constitue pas une excuse valable pour sa violation. Nul joueur ne peut se prévaloir de l'ignorance du règlement pour justifier une infraction. Les administrateurs du serveur se réservent le droit unilatéral de sanctionner tout utilisateur s'ils estiment que la preuve de la violation est suffisante, indépendamment du niveau de certitude absolue. Toute sanction prononcée par l'administration est définitive et n'est sujette à aucun recours.</p>
+        </div>
+
+        <!-- SECTION 1: DISPOSITIONS GÉNÉRALES -->
+        <section id="general">
+            <h2>I. Dispositions Générales et Principes Fondamentaux</h2>
+
+            <div class="rule">
+                <h3>Article 1.1 - Acceptation du Règlement</h3>
+                <p>L'accès au serveur constitue une acceptation formelle et irrévocable de la présente charte. Tout joueur qui ne peut pas accepter ces termes est prié de ne pas jouer sur le serveur.</p>
+                <div class="subsection">
+                    <strong>Conséquences :</strong> Le refus de se conformer aux règles entraînera une expulsion immédiate du serveur.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 1.2 - Compétence de l'Administration</h3>
+                <p>Les administrateurs du serveur possèdent l'autorité absolue pour interpréter et appliquer ce règlement. Leur interprétation est définitive et s'impose à tous les joueurs sans exception.</p>
+                <div class="subsection">
+                    <strong>Clause de preuve suffisante :</strong> L'administration peut sanctionner un joueur sur la base des preuves qu'elle juge suffisantes, y compris mais sans se limiter à : logs serveur, vidéos, témoignages, patterns de comportement suspects.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 1.3 - Absence de Recours</h3>
+                <p>Les décisions de l'administration ne sont pas sujettes à appel ou révision par les joueurs. Toute décision de sanction est définitive et immédiatement exécutoire.</p>
+            </div>
+
+            <div class="rule">
+                <h3>Article 1.4 - Responsabilité des Joueurs</h3>
+                <p>Chaque joueur est responsable des actions effectuées sur son compte. L'utilisation d'un compte par plusieurs personnes ne décharge pas le propriétaire du compte de sa responsabilité.</p>
+            </div>
+
+            <div class="rule">
+                <h3>Article 1.5 - Portée du Règlement</h3>
+                <p>Ce règlement s'applique à tous les joueurs sans exception, indépendamment de leur rang, de leur ancienneté ou de leur statut au sein du serveur.</p>
+                <div class="subsection">
+                    <strong>Exception :</strong> Les administrateurs opèrent sous un régime spécifique et doivent respecter les protocoles de gouvernance interne du serveur.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: GAMEPLAY & MÉCANIQUES -->
+        <section id="gameplay">
+            <h2>II. Gameplay & Mécaniques de Jeu</h2>
+
+            <div class="rule">
+                <h3>Article 2.1 - Statut de l'AFK (Away From Keyboard)</h3>
+                <p>L'AFK est totalement autorisé sur le serveur. Les joueurs AFK ne bénéficient d'aucune protection particulière quant à la perte de ressources ou d'expérience.</p>
+                <div class="subsection">
+                    <strong>Absence de recours :</strong> Un joueur AFK accepte de facto le risque de perdre son équipement, ses ressources ou son expérience. Aucune compensation ne sera accordée en cas de perte survenue pendant la période d'AFK.
+                </div>
+                <div class="subsection">
+                    <strong>Limitation :</strong> L'AFK ne doit pas être utilisé pour contourner les mécaniques de sécurité du serveur ou générer un avantage délibéré (ex: farm automatique sans auto-clic autorisé).
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 2.2 - Auto-Clic et Farming</h3>
+                <p><strong>Auto-clic autorisé exclusivement pour le farming agricole et minier.</strong> L'utilisation d'auto-clic en combat ou à titre défensif est strictement interdite.</p>
+                <div class="subsection">
+                    <strong>Activités autorisées :</strong> Récolte de cultures, afk farming de mobs (exp), mining, construction de farms de ressources.
+                </div>
+                <div class="subsection">
+                    <strong>Activités interdites :</strong> Combat PVP, défense d'une base, tir de projectiles en combat, action défensive durant un raid.
+                </div>
+                <div class="subsection">
+                    <strong>Violation :</strong> Utilisation d'auto-clic en combat = ban temporaire ou permanent selon les circonstances.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 2.3 - Mods et Schématiques de Construction</h3>
+                <p>Les mods permettant de placer des schématiques de structures (LiteMaica, WorldEdit par proxy, etc.) sont <strong>totalement autorisés</strong>, y compris la construction automatique de structures.</p>
+                <div class="subsection">
+                    <strong>Limitation :</strong> La construction automatique ne doit pas causer de lag serveur excessif ou bloquer des zones importantes de manière abusive.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 2.4 - Alliances Entre Joueurs</h3>
+                <p>Les alliances, coalitions et coopérations entre joueurs sont entièrement autorisées, même lorsqu'elles résultent en des situations asymétriques (plusieurs joueurs contre un).</p>
+                <div class="subsection">
+                    <strong>Aucune restriction :</strong> Aucun nombre minimum ou maximum de joueurs n'est imposé pour former une alliance. La coopération est un élément légitime du gameplay.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 2.5 - Performance Serveur et Farms à Lag</h3>
+                <p>Toute construction, farm ou système de redstone causant un lag excessif est strictement interdit et peut être supprimé par l'administration sans avertissement préalable.</p>
+                <div class="subsection">
+                    <strong>Définition des farms à lag :</strong> Toute structure générant un impact mesurable sur les performances du serveur (baisse FPS, TPS, latence augmentée, ralentissements du serveur global).
+                </div>
+                <div class="subsection">
+                    <strong>Exemples interdits :</strong> Farms avec trop d'entités, redstone intensive en boucle permanente, charged creeper farms, mob grinders non-optimisés, portails Nether surcharges, auto-farmers de structures, systèmes avec chunk loaders excessifs.
+                </div>
+                <div class="subsection">
+                    <strong>Critère d'interdiction :</strong> L'administration détermine unilatéralement si une construction cause un lag inacceptable, basé sur les metrics serveur et l'expérience des joueurs.
+                </div>
+                <div class="subsection">
+                    <strong>Sanction :</strong> Suppression immédiate de la structure sans compensation. Récidive = ban temporaire.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PVP & COMBAT -->
+        <section id="combat">
+            <h2>III. PVP, Combat et Pillage</h2>
+
+            <div class="rule">
+                <h3>Article 3.1 - Autorisation du PVP</h3>
+                <p>Le Player Versus Player (PVP) est entièrement autorisé sur le serveur. Tout joueur peut être attaqué à tout moment, indépendamment de sa localisation ou de son statut.</p>
+                <div class="subsection">
+                    <strong>Zones neutres :</strong> Aucune zone du serveur ne bénéficie de protection automatique contre le PVP. L'administration peut établir des zones pacifiées, mais cette décision sera communiquée.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 3.2 - Pillage et Destruction</h3>
+                <p>Le pillage et la destruction de structures appartenant à d'autres joueurs sont autorisés sans restriction. Aucun droit de propriété exclusive n'est garanti sur le serveur.</p>
+                <div class="subsection">
+                    <strong>Conséquence :</strong> Les joueurs acceptent le risque de perte totale de leurs biens et constructions en se connectant au serveur.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 3.3 - Quitter en Combat - Infraction Grave</h3>
+                <p><strong>Quitter le serveur pendant un combat ou dans les 30 secondes suivant la fin d'un engagement est strictement interdit et constitue une infraction majeure.</strong></p>
+                <div class="subsection">
+                    <strong>Définition d'un combat :</strong> Tout échange d'attaques, y compris les dégâts infligés ou reçus, commence le statut de combat. Le statut persiste pendant 30 secondes après le dernier coup.
+                </div>
+                <div class="subsection">
+                    <strong>Sanction :</strong> Perte complète de l'inventaire et de l'équipement. Ban temporaire pour récidive. Ban permanent en cas de répétition.
+                </div>
+                <div class="subsection">
+                    <strong>Système anti-quitte :</strong> Les joueurs ayant quitté pendant un combat verront leur inventaire confisqué et droppé à la localisation du décès.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 3.4 - Consentement au Combat</h3>
+                <p>Le consentement préalable au PVP n'est pas requis. Tout joueur peut être engagé sans avertissement préalable.</p>
+                <div class="subsection">
+                    <strong>Droit de fuite :</strong> Un joueur peut fuir un combat, mais ne peut pas quitter le serveur pour éviter une mort imminente.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 3.5 - Traçage et Localisation</h3>
+                <p>Utiliser des moyens pour localiser et tracer d'autres joueurs à des fins de PVP est autorisé et légitime (signaux de détection, suivi visual, etc.).</p>
+            </div>
+        </section>
+
+        <!-- SECTION 4: CONSTRUCTION & GRIEFING -->
+        <section id="construction">
+            <h2>IV. Construction, Propriété et Griefing</h2>
+
+            <div class="rule">
+                <h3>Article 4.1 - Absence de Protection Automatique</h3>
+                <p>Les structures, bâtiments et biens placés par les joueurs ne bénéficient d'aucune protection légale ou mécanique automatique. Un joueur ne possède pas de droits exclusifs sur ses constructions.</p>
+                <div class="subsection">
+                    <strong>Responsabilité :</strong> Il incombe aux joueurs de protéger leurs biens via des moyens de défense (fortifications, pièges, alliances).
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 4.2 - Griefing Autorisé</h3>
+                <p><strong>Le griefing - destruction ou modification des constructions d'autrui - est autorisé sans restriction.</strong> Aucune notion de "respect de propriété" ne s'applique sur le serveur.</p>
+                <div class="subsection">
+                    <strong>Exception :</strong> Griefing excessif causant un lag serveur ou utilisant des exploits techniques peut être arrêté par l'administration.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 4.3 - Vols et Trésorerie</h3>
+                <p>Voler les biens stockés dans les coffres, chests ou inventaires d'autres joueurs est autorisé sans limite.</p>
+                <div class="subsection">
+                    <strong>Prévention :</strong> Les joueurs doivent sécuriser leurs ressources via des coffres verrouillés, des bases souterraines cachées ou d'autres moyens de dissimulation.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 4.4 - Absence de Zones Sacrées</h3>
+                <p>Aucune structure, base ou région n'est exemptée des règles de griefing et pillage. Même les bâtiments fondateurs peuvent être détruits par les joueurs.</p>
+            </div>
+
+            <div class="rule">
+                <h3>Article 4.5 - Dédommagement en Cas de Griefing</h3>
+                <p>Aucun système de remboursement ou de compensation ne sera accordé en cas de griefing. La victime ne peut réclamer que la reconstruction manuelle de ses biens.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 5: MODIFICATIONS & EXPLOITS -->
+        <section id="modifications">
+            <h2>V. Modifications, Hacks et Exploits Interdits</h2>
+
+            <div class="rule">
+                <h3>Article 5.1 - X-Ray et Détection Minérale</h3>
+                <p><strong>Tout client mod ou hack permettant une vision souterraine (X-Ray, cave finder, etc.) est strictement interdit.</strong></p>
+                <div class="subsection">
+                    <strong>Définition :</strong> Rendre visible les minerais, cavernes ou structures souterraines à travers les blocs opaques.
+                </div>
+                <div class="subsection">
+                    <strong>Sanction :</strong> Ban permanent sans appel.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 5.2 - Fly Hack et Teleportation</h3>
+                <p><strong>Tout hack permettant le vol, la teleportation sans autorisation ou le déplacement en dehors des mécaniques légales est interdit.</strong></p>
+                <div class="subsection">
+                    <strong>Activités interdites :</strong> Flight mod, speed hack, phase walk, noclip, instant teleport.
+                </div>
+                <div class="subsection">
+                    <strong>Activités autorisées :</strong> Ender pearl, water bucket, slime block bounce (exploits techniques légitimes du jeu).
+                </div>
+                <div class="subsection">
+                    <strong>Sanction :</strong> Ban temporaire (première infraction), ban permanent (récidive).
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 5.3 - Cheats et Avantages Injustes</h3>
+                <p>Tout mod ou hack fournissant un avantage de gameplay inéquitable est interdit. Cela inclut mais ne se limite pas à :</p>
+                <div class="subsection">
+                    <strong>Interdits :</strong> Aimbots, hitbox expansion, combat enhancements, reach extenders, scaffold mods, fastplace, pillar mods, fullbright illégitimes, inventory tweaks non-standard.
+                </div>
+                <div class="subsection">
+                    <strong>Autorisés :</strong> Modifications cosmétiques uniquement (shaders sauf fullbright, texture packs, HUD mods sans avantage gameplay).
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 5.4 - Exploits de Mécanique de Jeu</h3>
+                <p>Les exploits technique du jeu Minecraft vanilla (endermen stacking, mob stacking, duplication d'items via mécaniques vanilla) sont soumis à la discrétion de l'administration.</p>
+                <div class="subsection">
+                    <strong>Position :</strong> Certains exploits peuvent être tolérés ou interdits selon l'équilibre du serveur. L'administration peut désactiver ou réduire les exploits à tout moment.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 5.5 - Usage de Clients Modifiés</h3>
+                <p>L'utilisation de clients tiers non-officiels (Lunar Client, Badlion, etc.) est autorisée, pour autant que les mods utilisés respectent les règles ci-dessus.</p>
+                <div class="subsection">
+                    <strong>Vérification :</strong> L'administration peut demander une preuve de conformité (capture d'écran des mods) à tout moment.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: CONDUITE & COMMUNICATION -->
+        <section id="chat">
+            <h2>VI. Conduite et Communication</h2>
+
+            <div class="rule">
+                <h3>Article 6.1 - Respect Entre Joueurs</h3>
+                <p>Bien que le PVP et le griefing soient autorisés, un minimum de respect humain est exigé. Le harcèlement, les insultes personnelles graves et les menaces réelles sont interdits.</p>
+                <div class="subsection">
+                    <strong>Définition :</strong> Le trash talk lié au jeu est autorisé. Les attaques contre la personne elle-même sont interdites.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 6.2 - Interdiction du Contenu Toxique</h3>
+                <p>Les contenus suivants sont strictement interdits dans le chat du serveur ou dans les structures :</p>
+                <div class="subsection">
+                    <strong>Interdits :</strong> Discours de haine, racisme, sexisme, homophobie, contenu extrémiste, menaces de violence réelle, spam, flood de messages, publicités d'autres serveurs.
+                </div>
+                <div class="subsection">
+                    <strong>Sanction :</strong> Mute, kick, ou ban selon la gravité.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 6.3 - Interdiction de l'Impersonation</h3>
+                <p>Se faire passer pour un administrateur, modérateur ou joueur connu pour tromper d'autres joueurs est interdit.</p>
+                <div class="subsection">
+                    <strong>Sanction :</strong> Kick immédiat et ban temporaire.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 6.4 - Absence de Transactions en Argent Réel</h3>
+                <p>Vendre ou acheter des items, ressources ou services du serveur contre de l'argent réel est strictement interdit.</p>
+                <div class="subsection">
+                    <strong>Sanction :</strong> Ban permanent pour les deux parties.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 6.5 - Pas de Publicité</h3>
+                <p>Promouvoir d'autres serveurs Minecraft, sites web ou services commerciaux est interdit.</p>
+                <div class="subsection">
+                    <strong>Sanction :</strong> Mute automatique, kick, puis ban.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 6.6 - Confidentialité des Données Personnelles</h3>
+                <p>Partager des données personnelles d'autres joueurs (adresses IP, localisation géographique, informations personnelles) sans consentement est interdit.</p>
+            </div>
+        </section>
+
+        <!-- SECTION 7: SANCTIONS & MODÉRATION -->
+        <section id="sanctions">
+            <h2>VII. Système de Sanctions et Modération</h2>
+
+            <div class="rule">
+                <h3>Article 7.1 - Autorité de l'Administration</h3>
+                <p>L'administration du serveur possède l'autorité absolue et discrétionnaire pour appliquer les sanctions. Chaque cas est évalué individuellement.</p>
+                <div class="subsection">
+                    <strong>Discrétion :</strong> L'administration peut dévier des protocoles normaux si la situation l'exige.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 7.2 - Types de Sanctions</h3>
+                <p>Les sanctions possibles incluent (du moins grave au plus grave) :</p>
+                <div class="subsection">
+                    <strong>1. Avertissement :</strong> Notification verbale ou écrite en chat.
+                </div>
+                <div class="subsection">
+                    <strong>2. Mute :</strong> Restriction de la capacité à parler en chat (durée variable).
+                </div>
+                <div class="subsection">
+                    <strong>3. Kick :</strong> Expulsion immédiate du serveur (reconnexion possible).
+                </div>
+                <div class="subsection">
+                    <strong>4. Ban Temporaire :</strong> Bannissement du serveur pour une durée déterminée (heures, jours, semaines).
+                </div>
+                <div class="subsection">
+                    <strong>5. Ban Permanent :</strong> Exclusion définitive du serveur. Aucun appel.
+                </div>
+                <div class="subsection">
+                    <strong>6. Confiscation d'Items :</strong> Suppression de l'inventaire complète (notamment en cas de quit en combat).
+                </div>
+                <div class="subsection">
+                    <strong>7. Rollback/Suppression de Structures :</strong> Annulation des constructions abusives (griefing automatisé, lag farming, etc.).
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 7.3 - Gradation des Sanctions</h3>
+                <p>L'administration applique généralement une gradation, mais peut ignorer cette progression en cas de violation grave ou répétée.</p>
+                <div class="subsection">
+                    <strong>Infractions mineures :</strong> Avertissement → Mute → Kick → Ban temporaire.
+                </div>
+                <div class="subsection">
+                    <strong>Infractions graves :</strong> Ban immédiat (X-Ray, fly hack, quit en combat répété, toxicité majeure).
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 7.4 - Appel des Décisions</h3>
+                <p>Les joueurs bannis ne disposent d'aucun mécanisme d'appel ou de révision. Les décisions de l'administration sont définitives et irrévocables.</p>
+                <div class="subsection">
+                    <strong>Contact administrateur :</strong> Un email peut être adressé à l'administration, mais aucune réponse n'est garantie, et les décisions resteront définitives.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 7.5 - Preuves et Enquêtes</h3>
+                <p>L'administration dispose du droit d'inspecter les logs serveur, les données de comportement des joueurs et les artefacts techniques pour enquêter sur les violations.</p>
+                <div class="subsection">
+                    <strong>Niveau de preuve :</strong> Un soupçon raisonnable est suffisant pour engager une enquête ou une sanction préventive.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 7.6 - Durée des Bans</h3>
+                <p>Les bans temporaires sont décidés par l'administration selon la gravité. Les bans permanents s'appliquent sans date d'expiration.</p>
+                <div class="subsection">
+                    <strong>Exemple de progression :</strong> Première infraction: 3 jours | Deuxième: 1 semaine | Troisième+: Permanent.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 7.7 - Signalement de Violations</h3>
+                <p>Les joueurs sont encouragés à signaler les violations du règlement à l'administration via Discord ou un système de ticket.</p>
+                <div class="subsection">
+                    <strong>Confidentialité :</strong> Les signalements seront traités avec discrétion, mais l'anonymat n'est pas garanti.
+                </div>
+            </div>
+
+            <div class="rule">
+                <h3>Article 7.8 - Immunité Administrative</h3>
+                <p>Les administrateurs et modérateurs ne sont pas liés par les restrictions imposées aux joueurs normaux dans l'exercice de leurs fonctions.</p>
+                <div class="subsection">
+                    <strong>Limite :</strong> L'administration ne peut utiliser ses privilèges de manière abusive ou pour avantager leur propre gameplay.
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Notice -->
+        <div class="notice" style="margin-top: 3rem;">
+            <h3>Disposition Finale</h3>
+            <p>Ce règlement peut être modifié à tout moment par l'administration sans avertissement préalable. Les joueurs sont tenus de consulter régulièrement cette page pour rester à jour. L'administration se réserve le droit d'amender, d'ajouter ou de retirer des articles selon l'évolution du serveur. L'entrée en vigueur des modifications est immédiate.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>Serveur Minecraft Sharia</strong></p>
+        <p>Règlement Officiel - Septembre 2026</p>
+        <p>Pour plus d'informations, rejoignez notre Discord ou consultez la page du serveur.</p>
+        <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.85rem;">© 2026 Sharia Server. Tous droits réservés.</p>
+    </footer>
+
+    <script>
+        // ==================== NAVIGATION ====================
+        const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('section');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll on click
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').slice(1);
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ==================== SEARCH FUNCTIONALITY ====================
+        const searchInput = document.getElementById('searchInput');
+        const clearBtn = document.getElementById('clearSearch');
+        const resultsCount = document.getElementById('resultsCount');
+        const allRules = document.querySelectorAll('.rule');
+        const allSections = document.querySelectorAll('section');
+
+        // Fonction de recherche
+        function performSearch(query) {
+            const searchTerm = query.toLowerCase().trim();
+            let matchCount = 0;
+            let visibleSections = new Set();
+
+            if (searchTerm === '') {
+                // Réinitialiser - afficher tout
+                allRules.forEach(rule => {
+                    rule.classList.remove('hidden', 'search-highlight');
+                });
+                allSections.forEach(section => {
+                    section.classList.remove('section-hidden');
+                });
+                resultsCount.textContent = '';
+                clearBtn.disabled = true;
+                return;
+            }
+
+            clearBtn.disabled = false;
+
+            // Chercher dans chaque règle
+            allRules.forEach(rule => {
+                const title = rule.querySelector('h3').textContent.toLowerCase();
+                const content = rule.textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                    rule.classList.remove('hidden');
+                    rule.classList.add('search-highlight');
+                    matchCount++;
+                    
+                    // Identifier la section parente
+                    const section = rule.closest('section');
+                    if (section) {
+                        visibleSections.add(section.id);
+                    }
+                } else {
+                    rule.classList.add('hidden');
+                    rule.classList.remove('search-highlight');
+                }
+            });
+
+            // Masquer/afficher les sections
+            allSections.forEach(section => {
+                if (visibleSections.has(section.id)) {
+                    section.classList.remove('section-hidden');
+                } else {
+                    section.classList.add('section-hidden');
+                }
+            });
+
+            // Afficher le résultat
+            if (matchCount === 0) {
+                resultsCount.textContent = `Aucun résultat pour "${query}"`;
+                resultsCount.style.color = var(--accent);
+            } else {
+                const plural = matchCount > 1 ? 's' : '';
+                resultsCount.textContent = `${matchCount} résultat${plural} trouvé${plural}`;
+                resultsCount.style.color = 'var(--text-muted)';
+            }
+        }
+
+        // Event listeners
+        searchInput.addEventListener('input', (e) => {
+            performSearch(e.target.value);
+        });
+
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                searchInput.value = '';
+                performSearch('');
+            }
+        });
+
+        clearBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            performSearch('');
+            searchInput.focus();
+        });
+
+        // Focus au chargement (optionnel)
+        // searchInput.focus();
+    </script>
+</body>
+</html>

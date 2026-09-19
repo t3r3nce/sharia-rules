@@ -1,0 +1,47 @@
+# Configuration GitHub Pages - Serveur Minecraft Sharia
+
+title: "Règlement Serveur Sharia"
+description: "Règlement officiel du serveur Minecraft Sharia - Version complète et applicabilité légale"
+author: "Administration Serveur Sharia"
+
+# URL du site
+url: "https://[votre-username].github.io"
+baseurl: "/sharia-rules"
+
+# Langue
+lang: fr
+
+# Thème (optionnel - laisser vide pour utiliser le design personnalisé)
+# theme: jekyll-theme-slate
+
+# Plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-feed
+
+# Configuration de génération
+markdown: kramdown
+permalink: /:title/
+exclude:
+  - README.md
+  - .gitignore
+  - _config.yml
+
+# Navigation
+navigation:
+  - title: "Accueil"
+    url: "/"
+  - title: "Règlement Complet"
+    url: "/index.html"
+  - title: "GitHub"
+    url: "https://github.com/[votre-username]/sharia-rules"
+
+# SEO
+twitter:
+  username: ""
+google_site_verification: ""
+
+# Autoriser les extensions personnalisées
+# uncomment pour autoriser les fichiers HTML
+include:
+  - index.html

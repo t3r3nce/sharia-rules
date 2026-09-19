@@ -1,0 +1,34 @@
+# Système d'exploitation
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE & Éditeurs
+.vscode/
+.idea/
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+# Environnement
+node_modules/
+.env
+.env.local
+.env.*.local
+
+# Fichiers de build/cache
+dist/
+build/
+*.log
+npm-debug.log*
+
+# Fichiers temporaires
+*.tmp
+.cache/
+temp/
+
+# Fichiers de système de contrôle de version
+.git/
+.gitkeep
